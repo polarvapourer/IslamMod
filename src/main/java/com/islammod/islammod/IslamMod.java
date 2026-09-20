@@ -5,6 +5,8 @@ import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.BookViewScreen;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -149,7 +151,11 @@ public final class IslamMod {
             ServerLevel nether = ((ServerLevel) player.level()).getServer().getLevel(Level.NETHER);
             if (nether != null) {
                 player.sendSystemMessage(Component.literal("§cYou did not pray during the day and have been sent to the Nether."));
-                player.teleportTo(nether, 0.5D, 64.0D, 0.5D, Set.of(),
+                BlockPos portalSearchOrigin = new BlockPos(0, 64, 0);
+                var portal = nether.getPortalForcer().createPortal(portalSearchOrigin, Direction.Axis.X);
+                BlockPos portalPosition = portal.map(found -> found.minCorner).orElse(portalSearchOrigin);
+                player.teleportTo(nether, portalPosition.getX() + 0.5D, portalPosition.getY() + 1.0D,
+                        portalPosition.getZ() + 0.5D, Set.of(),
                         player.getYRot(), player.getXRot(), false);
             }
         }

@@ -51,6 +51,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Mod(IslamMod.MODID)
 public final class IslamMod {
@@ -251,6 +253,7 @@ public final class IslamMod {
     private static final class QuranReader {
         private static final String TEXT_RESOURCE = "/data/islammod/quran/quran.txt";
         private static final int CHARACTERS_PER_PAGE = 180;
+        private static final Pattern VERSE_LINE = Pattern.compile("^(\\d{3})\\|(\\d{3})\\|(.*)$");
 
         private QuranReader() {}
 
@@ -264,11 +267,34 @@ public final class IslamMod {
                 if (stream == null) return List.of(Component.literal("Quran text file not found."));
                 String text = new String(stream.readAllBytes(), StandardCharsets.UTF_8)
                         .replace("\r\n", "\n").replace('\r', '\n').trim();
-                return splitIntoPages(text);
+                return splitIntoPages(formatVerses(text));
             } catch (IOException exception) {
                 LOGGER.error("Could not read Quran text resource", exception);
                 return List.of(Component.literal("Quran text could not be loaded."));
             }
+        }
+
+        private static String formatVerses(String text) {
+            StringBuilder formatted = new StringBuilder();
+            int previousSurah = -1;
+            for (String line : text.split("\n", -1)) {
+                Matcher verse = VERSE_LINE.matcher(line);
+                if (!verse.matches()) {
+                    formatted.append(line).append('\n');
+                    continue;
+                }
+
+                int surah = Integer.parseInt(verse.group(1));
+                if (surah != previousSurah) {
+                    if (formatted.length() > 0 && formatted.charAt(formatted.length() - 1) != '\n') {
+                        formatted.append('\n');
+                    }
+                    formatted.append("Surah ").append(surah).append('\n');
+                    previousSurah = surah;
+                }
+                formatted.append(verse.group(2)).append(". ").append(verse.group(3)).append('\n');
+            }
+            return formatted.toString().trim();
         }
 
         private static List<Component> splitIntoPages(String text) {

@@ -37,6 +37,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.event.entity.living.LivingConversionEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -106,6 +107,7 @@ public final class IslamMod {
         LivingConversionEvent.Post.BUS.addListener(IslamMod::resetImamZombieVillagerProfession);
         LivingEvent.LivingTickEvent.BUS.addListener(IslamMod::checkPrayerRequirement);
         LivingEntityUseItemEvent.Finish.BUS.addListener(IslamMod::checkHaramFood);
+        EntityTravelToDimensionEvent.BUS.addListener(IslamMod::checkNetherExit);
     }
 
     private static void checkHaramFood(LivingEntityUseItemEvent.Finish event) {
@@ -151,6 +153,12 @@ public final class IslamMod {
             ServerLevel nether = ((ServerLevel) player.level()).getServer().getLevel(Level.NETHER);
             if (nether != null) {
                 player.sendSystemMessage(Component.literal("§cYou did not pray during the day and have been sent to the Nether."));
+                data.putBoolean("islammod_nether_trial", true);
+                data.putBoolean("islammod_nether_task_netherrack", false);
+                data.putBoolean("islammod_nether_task_quartz", false);
+                data.putBoolean("islammod_nether_task_glowstone", false);
+                player.sendSystemMessage(Component.literal(
+                        "§6Nether trial: collect 16 netherrack, 8 nether quartz, and 4 glowstone dust to unlock the exit."));
                 BlockPos portalSearchOrigin = new BlockPos(0, 64, 0);
                 var portal = nether.getPortalForcer().createPortal(portalSearchOrigin, Direction.Axis.X);
                 BlockPos portalPosition = portal.map(found -> found.minCorner).orElse(portalSearchOrigin);
@@ -198,6 +206,36 @@ public final class IslamMod {
             if (time >= 13000 && time < 22500) return "Isha";
             return null;
         }
+    }
+
+    private static boolean checkNetherExit(EntityTravelToDimensionEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)
+                || !event.getDimension().equals(Level.OVERWORLD)
+                || !player.getPersistentData().getBooleanOr("islammod_nether_trial", false)) return false;
+
+        var data = player.getPersistentData();
+        boolean netherrack = data.getBooleanOr("islammod_nether_task_netherrack", false)
+                || player.getInventory().countItem(Items.NETHERRACK) >= 16;
+        boolean quartz = data.getBooleanOr("islammod_nether_task_quartz", false)
+                || player.getInventory().countItem(Items.QUARTZ) >= 8;
+        boolean glowstone = data.getBooleanOr("islammod_nether_task_glowstone", false)
+                || player.getInventory().countItem(Items.GLOWSTONE_DUST) >= 4;
+        data.putBoolean("islammod_nether_task_netherrack", netherrack);
+        data.putBoolean("islammod_nether_task_quartz", quartz);
+        data.putBoolean("islammod_nether_task_glowstone", glowstone);
+
+        if (netherrack && quartz && glowstone) {
+            data.putBoolean("islammod_nether_trial", false);
+            player.sendSystemMessage(Component.literal("§aThe Nether trial is complete. You may return to the Overworld."));
+            return false;
+        }
+
+        player.sendSystemMessage(Component.literal(
+                "§cThe Nether exit is locked. Complete all three tasks: "
+                        + (netherrack ? "§a16 netherrack " : "§c16 netherrack ")
+                        + (quartz ? "§a8 quartz " : "§c8 quartz ")
+                        + (glowstone ? "§a4 glowstone dust" : "§c4 glowstone dust")));
+        return true;
     }
 
     private static final class QuranItem extends Item {

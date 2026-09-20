@@ -7,6 +7,7 @@ IslamMod is a Minecraft Forge mod for Minecraft 26.2 that adds Islamic-themed ga
 - **Prayer mat:** Use the prayer mat during a designated salah window to perform Fajr, Dhuhr, Asr, Maghrib, or Isha.
 - **Prayer reminders:** Players receive an in-game notification when each salah window begins.
 - **Daily prayer requirement:** A player who completes no valid prayer during a Minecraft day is sent to the Nether when the next day begins.
+- **Nether trial:** Players sent to the Nether must collect 16 netherrack, 8 nether quartz, and 4 glowstone dust before the return portal will unlock.
 - **Prayer rug:** Adds a placeable prayer rug block and item used by the imam profession.
 - **Mosque structure:** Includes a domed mosque with full glass windows, a readable `MOSQUE` sign above the entrance, one prayer rug, a chest containing a prayer mat, a bed for the imam, and an entrance approach.
 - **Imam villager:** Adds an imam profession linked to prayer rugs, with cleric-style trades and imam-specific localization.
@@ -48,4 +49,4 @@ The downloaded JAR is a **Forge** mod and will not load in a vanilla Minecraft p
 3. Copy `IslamMod-1.0.0.jar` directly into the `mods` folder for that Forge installation. On Windows, this is normally `%APPDATA%\.minecraft\mods`. Do not put it in a version subfolder such as `%APPDATA%\.minecraft\mods\26.2`.
 4. Launch Minecraft using the Forge installation, not the standard/latest-release installation.
 
-The JAR must be used with Minecraft 26.2 and Forge 65.1.x. It is not compatible with a different Minecraft version, Fabric, NeoForge, or a vanilla profile.
+The JAR must be used with Minecraft 26.2 and Forge 65.1.x. It is not compatible with a different Minecraft version, Fabric, NeoForge, or a vanilla profile. Download a newly built JAR after source changes; an older release asset will not include later fixes.

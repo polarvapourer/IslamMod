@@ -19,7 +19,7 @@ displayName="IslamMod"
 authors="HeatWaveMC16" #optional
 #displayTest="MATCH_VERSION" #optional, default=MATCH_VERSION when not clientSideOnly, else IGNORE_ALL_VERSION
 
-description='''A Mod about Islam'''
+description='''Adds Islamic prayer mechanics, a mosque, an imam villager, and a Quran reader to Minecraft for a faith-themed survival experience.'''
 
 [[dependencies.islammod]] #recommended
     modId="forge"

@@ -34,7 +34,7 @@ This project requires Java 25, Forge 65.1.0, and Minecraft 26.2.
 
 ## Downloads
 
-- [Download the single `IslamMod.java` source file](https://github.com/polarvapourer/IslamMod/raw/main/src/main/java/com/islammod/islammod/IslamMod.java)
+- [Download IslamMod version 1.0](https://github.com/polarvapourer/IslamMod/releases/tag/v1.0.0)
 - [Download the complete project as a ZIP](https://github.com/polarvapourer/IslamMod/archive/refs/heads/main.zip)
 
-The Java file contains the mod's complete Java implementation. The project ZIP also includes the required Minecraft resources, textures, structure data, Gradle files, and build configuration.
+The release page is the recommended download location. The project ZIP includes the required Minecraft resources, textures, structure data, Gradle files, and build configuration.

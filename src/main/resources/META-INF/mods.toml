@@ -10,7 +10,7 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="islammod"
-version="1.0.2"
+version="1.0.3"
 displayName="IslamMod"
 #updateJSONURL="https://example.com/updates.json" #optional
 #displayURL="https://example.com/" #optional

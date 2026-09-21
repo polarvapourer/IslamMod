@@ -131,6 +131,7 @@ public final class IslamMod {
         LivingConversionEvent.Post.BUS.addListener(IslamMod::resetImamZombieVillagerProfession);
         LivingEvent.LivingTickEvent.BUS.addListener(IslamMod::checkPrayerRequirement);
         LivingEvent.LivingTickEvent.BUS.addListener(IslamMod::animatePrayer);
+        LivingEvent.LivingTickEvent.BUS.addListener(IslamMod::showImamName);
         LivingEntityUseItemEvent.Finish.BUS.addListener(IslamMod::checkHaramFood);
         EntityTravelToDimensionEvent.BUS.addListener(IslamMod::checkNetherExit);
         PlayerEvent.Clone.BUS.addListener(IslamMod::preserveNetherTrial);
@@ -279,6 +280,17 @@ public final class IslamMod {
                 || !(event.getOutcome() instanceof ZombieVillager zombieVillager)) return;
         zombieVillager.setVillagerData(zombieVillager.getVillagerData().withProfession(
                 BuiltInRegistries.VILLAGER_PROFESSION.getOrThrow(VillagerProfession.NONE)));
+    }
+
+    private static void showImamName(LivingEvent.LivingTickEvent event) {
+        if (!(event.getEntity() instanceof Villager villager)
+                || !villager.getVillagerData().profession().is(IMAM.getKey())) return;
+        if (!Component.literal("Imam").equals(villager.getCustomName())) {
+            villager.setCustomName(Component.literal("Imam"));
+        }
+        if (!villager.isCustomNameVisible()) {
+            villager.setCustomNameVisible(true);
+        }
     }
 
     private static class PrayerMatBlock extends Block {

@@ -35,7 +35,7 @@ This project requires Java 25, Forge 65.1.0, and Minecraft 26.2.
 
 ## Downloads
 
-- [Download IslamMod version 1.0.2](https://github.com/polarvapourer/IslamMod/releases/tag/v1.0.2)
+- [Download IslamMod version 1.0.3](https://github.com/polarvapourer/IslamMod/releases/tag/v1.0.3)
 - [Download the complete project as a ZIP](https://github.com/polarvapourer/IslamMod/archive/refs/heads/main.zip)
 
 The release page is the recommended download location. The project ZIP includes the required Minecraft resources, textures, structure data, Gradle files, and build configuration.
@@ -46,7 +46,7 @@ The downloaded JAR is a **Forge** mod and will not load in a vanilla Minecraft p
 
 1. Install Minecraft Forge **65.1.x for Minecraft 26.2**.
 2. Launch the Forge 65.1.x installation once, then close Minecraft.
-3. Copy `IslamMod-1.0.2.jar` directly into the `mods` folder for that Forge installation. On Windows, this is normally `%APPDATA%\.minecraft\mods`. Do not put it in a version subfolder such as `%APPDATA%\.minecraft\mods\26.2`.
+3. Copy `IslamMod-1.0.3.jar` directly into the `mods` folder for that Forge installation. On Windows, this is normally `%APPDATA%\.minecraft\mods`. Do not put it in a version subfolder such as `%APPDATA%\.minecraft\mods\26.2`.
 4. Launch Minecraft using the Forge installation, not the standard/latest-release installation.
 
 The JAR must be used with Minecraft 26.2 and Forge 65.1.x. It is not compatible with a different Minecraft version, Fabric, NeoForge, or a vanilla profile. Download a newly built JAR after source changes; an older release asset will not include later fixes.

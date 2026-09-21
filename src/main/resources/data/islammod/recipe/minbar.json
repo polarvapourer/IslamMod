@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "DSD",
+    "SSS",
+    "L L"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:dark_oak_planks"
+    },
+    "S": {
+      "item": "minecraft:spruce_planks"
+    },
+    "L": {
+      "item": "minecraft:spruce_log"
+    }
+  },
+  "result": {
+    "id": "islammod:minbar",
+    "count": 1
+  }
+}

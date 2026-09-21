@@ -396,15 +396,6 @@
                                          "element_type":  "minecraft:empty_pool_element"
                                      },
                          "weight":  5
-                     },
-                     {
-                         "weight":  10,
-                         "element":  {
-                                         "element_type":  "minecraft:legacy_single_pool_element",
-                                         "location":  "islammod:mosque",
-                                         "processors":  "minecraft:empty",
-                                         "projection":  "rigid"
-                                     }
                      }
                  ],
     "fallback":  "minecraft:village/savanna/terminators"

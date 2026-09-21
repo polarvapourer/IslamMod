@@ -1,0 +1,28 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "mat": "islammod:block/prayer_mat",
+    "particle": "islammod:block/prayer_mat"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 1, 16],
+      "faces": {
+        "down": { "texture": "#mat", "cullface": "down" },
+        "up": { "texture": "#mat" },
+        "north": { "texture": "#mat", "cullface": "north" },
+        "south": { "texture": "#mat", "cullface": "south" },
+        "west": { "texture": "#mat", "cullface": "west" },
+        "east": { "texture": "#mat", "cullface": "east" }
+      }
+    },
+    {
+      "from": [1, 1, 1],
+      "to": [15, 1.25, 15],
+      "faces": {
+        "up": { "texture": "#mat", "uv": [1, 1, 15, 15] }
+      }
+    }
+  ]
+}

@@ -7,10 +7,10 @@ IslamMod is a Minecraft Forge mod for Minecraft 26.2 that adds Islamic-themed ga
 - **Prayer mat:** Use the prayer mat during a designated salah window to perform Fajr, Dhuhr, Asr, Maghrib, or Isha.
 - **Prayer reminders:** Players receive an in-game notification when each salah window begins.
 - **Daily prayer requirement:** A player who completes no valid prayer during a Minecraft day is sent to the Nether when the next day begins.
-- **Nether trial:** Players sent to the Nether must collect 16 netherrack, 8 nether quartz, and 4 glowstone dust before the return portal will unlock.
-- **Prayer rug:** Adds a placeable prayer rug block and item used by the imam profession.
-- **Mosque structure:** Includes a domed mosque with full glass windows, a readable `MOSQUE` sign above the entrance, one prayer rug, a chest containing a prayer mat, a bed for the imam, and an entrance approach.
-- **Imam villager:** Adds an imam profession linked to prayer rugs, with cleric-style trades and imam-specific localization.
+- **Nether trial:** Players sent to the Nether receive three randomly selected collection tasks from a Nether-material pool before the return portal will unlock.
+- **Minbar:** Adds a placeable minbar block and item used by the imam profession.
+- **Mosque structure:** Includes a domed mosque with full glass windows, a readable `MOSQUE` sign above the entrance, one minbar, a chest containing a prayer mat, a bed for the imam, and an entrance approach.
+- **Imam villager:** Adds an imam profession linked to minbars, with cleric-style trades and imam-specific localization.
 - **Quran:** Adds a Quran item that opens the bundled Quran text in a book-style GUI.
 - **Halal and haram food:** Recognized haram foods, including pork, rotten flesh, spider eyes, poisonous potatoes, and pufferfish, poison the player when eaten. Other foods are left unchanged.
 - **Project identity:** Uses the `islammod` mod ID and the `IslamMod` project name.

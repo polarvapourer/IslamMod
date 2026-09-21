@@ -1,7 +1,8 @@
 {
   "item.islammod.prayer_mat": "Prayer Mat",
-  "block.islammod.prayer_rug": "Prayer Rug",
-  "item.islammod.prayer_rug": "Prayer Rug",
+  "item.islammod.islam_symbol": "Islamic Symbol",
+  "block.islammod.minbar": "Minbar",
+  "item.islammod.minbar": "Minbar",
   "item.islammod.quran": "Quran",
   "entity.islammod.villager.imam": "Imam"
 }
